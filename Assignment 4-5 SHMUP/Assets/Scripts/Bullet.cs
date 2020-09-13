@@ -4,17 +4,16 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-
     public void MakeHomming()
     {
-
     }
     public void SetAnimation()
     {
-
     }
     public void MakeExplosive()
     {
-
     }
 }
+
+
+

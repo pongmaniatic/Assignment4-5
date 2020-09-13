@@ -5,43 +5,33 @@ using UnityEngine.Assertions;
  
 public class StarField : MonoBehaviour
 {
-	public int MaxStars = 100;
-	public float StarSize = 0.1f;
-	public float StarSizeRange = 0.5f;
-	public float FieldWidth = 20f;
-	public float FieldHeight = 25f;
-	public bool Colorize = false;
-
+	public int maxStars = 100;
+	public float starSize = 0.1f;
+	public float starSizeRange = 0.5f;
+	public float fieldWidth = 20f;
+	public float fieldHeight = 25f;
+	public bool colorize = false;
 	float xOffset;
 	float yOffset;
-
 	ParticleSystem Particles;
 	ParticleSystem.Particle[] Stars;
-
-
 	void Awake()
 	{
-		Stars = new ParticleSystem.Particle[MaxStars];
+		Stars = new ParticleSystem.Particle[maxStars];
 		Particles = GetComponent<ParticleSystem>();
-
 		Assert.IsNotNull(Particles, "Particle system missing from object!");
-
-		xOffset = FieldWidth * 0.5f; // Offset the coordinates to distribute the spread
-		yOffset = FieldHeight * 0.5f; // around the object's center
-
-		for (int i = 0; i < MaxStars; i++)
+		xOffset = fieldWidth * 0.5f; // Offset the coordinates to distribute the spread
+		yOffset = fieldHeight * 0.5f; // around the object's center
+		for (int i = 0; i < maxStars; i++)
 		{
-			float randSize = Random.Range(StarSizeRange, StarSizeRange + 1f); // Randomize star size within parameters
-			float scaledColor = (true == Colorize) ? randSize - StarSizeRange : 1f; // If coloration is desired, color based on size
-
-			Stars[i].position = GetRandomInRectangle(FieldWidth, FieldHeight) + transform.position;
-			Stars[i].startSize = StarSize * randSize;
+			float randSize = Random.Range(starSizeRange, starSizeRange + 1f); // Randomize star size within parameters
+			float scaledColor = (true == colorize) ? randSize - starSizeRange : 1f; // If coloration is desired, color based on size
+			Stars[i].position = GetRandomInRectangle(fieldWidth, fieldHeight) + transform.position;
+			Stars[i].startSize = starSize * randSize;
 			Stars[i].startColor = new Color(1f, scaledColor, scaledColor, 1f);
 		}
 		Particles.SetParticles(Stars, Stars.Length);// Write data to the particle system
 	}
-
-
 	// GetRandomInRectangle
 	//----------------------------------------------------------
 	// Get a random value within a certain rectangle area

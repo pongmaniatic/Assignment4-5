@@ -2,24 +2,40 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum MovementType { CenterMovement, CircleSpinMovement }
 public class ShipMovement : MonoBehaviour
-{
-    //private bool CanMove = true;// this is in case I want to make the ship not be able to move.
-    //private int Advancing = 0;// -1 is going back, 0 is stationary and 1 is advancing.
-    //private int Turning = 0;// -1 is going left, 0 is stationary and 1 is going right. 
+{ 
     public Rigidbody2D rb2D;
-    private float thrust = 0.5f;
-    private float torque = 0.02f;
+    private float thrust = 5f;
+    private float torque = 180f;
+    private int Type;
 
-    private void Update()
+    public MovementType movementType;
+    private IMovementType iMovementType;
+
+    void Start(){HandleMovementType();}
+    private void Update(){Movilize();}
+    private void HandleMovementType()
     {
-        #region ShipMovement
-        if (Input.GetKey(KeyCode.W)){rb2D.AddForce(transform.right * thrust); }//makes the ship go forwards.
-        if (Input.GetKey(KeyCode.S)){rb2D.AddForce(transform.right * -thrust); }//makes the ship go backwards.
-        if (Input.GetKey(KeyCode.A)){rb2D.AddTorque(torque); }//makes the ship turn left.
-        if (Input.GetKey(KeyCode.D)){rb2D.AddTorque(-torque); }//makes the ship turn right.
-        #endregion
+        Component IWeaponComponent = gameObject.GetComponent<IWeapon>() as Component;//To prevent Unity from creating multiple copies of the same component in inspector at runtime
+        if (IWeaponComponent != null) { Destroy(IWeaponComponent); }
+        #region Movement Strategy
+        switch (movementType)
+        {
+            case MovementType.CenterMovement:
+                iMovementType = gameObject.AddComponent<CenterMovement>();
+                Type = 0;
+                break;
+            case MovementType.CircleSpinMovement:
+                iMovementType = gameObject.AddComponent<CircleSpinMovement>();
+                Type = 1;
+                break;
+            default:
+                iMovementType = gameObject.AddComponent<CenterMovement>();
+                break;
+        }
+        #endregion 
     }
-
+    public void Movilize(){iMovementType.Move(rb2D, thrust, torque);}
 
 }
