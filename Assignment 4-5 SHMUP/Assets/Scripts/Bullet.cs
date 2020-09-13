@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+
+    private void Update()
+    {
+        //transform.position = transform.right;
+    }
     public void MakeHomming()
     {
     }

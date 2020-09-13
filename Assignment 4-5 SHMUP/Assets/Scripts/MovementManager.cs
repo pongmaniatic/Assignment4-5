@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerManager : MonoBehaviour{}
+public class MovementManager : MonoBehaviour{}
 public interface IMovementType { void Move(Rigidbody2D rb2D, float Thrust, float Torque); }
 public class CenterMovement : MonoBehaviour, IMovementType
 {
