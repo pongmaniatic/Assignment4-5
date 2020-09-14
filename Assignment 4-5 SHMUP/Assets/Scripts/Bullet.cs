@@ -1,14 +1,19 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-
-    private void Update()
+    void OnBecameInvisible()
     {
-        //transform.position = transform.right;
+        Destroy(gameObject);
     }
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (!other.gameObject.CompareTag("Player"))
+        {
+            Destroy(gameObject);
+        }
+    }
+
     public void MakeHomming()
     {
     }

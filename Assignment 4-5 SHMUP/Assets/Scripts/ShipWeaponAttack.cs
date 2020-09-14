@@ -1,25 +1,23 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public enum WeaponType { Bullet1, Bullet2 }
 
 public class ShipWeaponAttack : MonoBehaviour
 {
-    public GameObject WeaponMarkerBullet1;// get the weapon icon to put the right image of the weapon currently selected.
-    public GameObject WeaponMarkerBullet2;// get the weapon icon to put the right image of the weapon currently selected.
-    public GameObject Hommingmarker;// turn on or off.
-    public GameObject HommingSymbolMaker;// turn on or off.
+    public GameObject weaponMarkerBullet1;// get the weapon icon to put the right image of the weapon currently selected.
+    public GameObject weaponMarkerBullet2;// get the weapon icon to put the right image of the weapon currently selected.
+    public GameObject hommingmarker;// turn on or off.
+    public GameObject hommingSymbolMaker;// turn on or off.
     public WeaponType weaponType;
     private IWeapon iWeapon;
-    private int WeaponCurrentlySelected = 0;// 0 is bullet1 and 1 is bullet2, can be expanded if more weapons are added.
-    private bool SecondBulletUnlocked = false;
-    private bool HommingUnlocked = false;
+    private float fireRate = 0.25F;
+    private float nextFire = 0.0F;
+    //private int weaponCurrentlySelected = 0;// 0 is bullet1 and 1 is bullet2, can be expanded if more weapons are added.
+    //private bool hommingUnlocked = false;
 
 
     void Start()
     {
- 
         HandleWeaponType(); //to check the value of weaponType in the inspector initially
     }
 
@@ -32,13 +30,13 @@ public class ShipWeaponAttack : MonoBehaviour
         {
             case WeaponType.Bullet2:
                 iWeapon = gameObject.AddComponent<Bullet2>();
-                WeaponMarkerBullet1.SetActive(true);
-                WeaponMarkerBullet2.SetActive(true);
+                weaponMarkerBullet1.SetActive(false);
+                weaponMarkerBullet2.SetActive(true);
                 break;
             case WeaponType.Bullet1:
                 iWeapon = gameObject.AddComponent<Bullet1>();
-                WeaponMarkerBullet1.SetActive(true);
-                WeaponMarkerBullet2.SetActive(false);
+                weaponMarkerBullet1.SetActive(true);
+                weaponMarkerBullet2.SetActive(false);
                 break;
             default:
                 iWeapon = gameObject.AddComponent<Bullet1>();
@@ -50,27 +48,23 @@ public class ShipWeaponAttack : MonoBehaviour
     public void Fire() { iWeapon.Shoot(); }
     public void GrabWeapon()
     {
-        if (weaponType == WeaponType.Bullet1)
-        {
-            weaponType = WeaponType.Bullet2;
-        }
-        else if (weaponType == WeaponType.Bullet2)
-        {
-            weaponType = WeaponType.Bullet1;
-        }
+        if (weaponType == WeaponType.Bullet1) { weaponType = WeaponType.Bullet2; }
+        else if (weaponType == WeaponType.Bullet2) { weaponType = WeaponType.Bullet1; }
         HandleWeaponType();
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D col)
     {
-        Destroy(collision.gameObject);
-        if (collision.gameObject.tag == "NewWeapon")
-        {
-            GrabWeapon();
-        }
+        Destroy(col.gameObject);
+        if (col.gameObject.tag == "NewWeapon") { GrabWeapon(); }
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) { HandleWeaponType(); Fire(); }
+        if (Input.GetMouseButton(0) && Time.time > nextFire)
+        {
+            nextFire = Time.time + fireRate;
+            HandleWeaponType();
+            Fire();
+        }
     }
 }

@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2378305201991041977}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.368, y: -0.047, z: 2}
+  m_LocalPosition: {x: -0.368, y: -0.047, z: 0}
   m_LocalScale: {x: 1.3333334, y: 1.3333334, z: 1}
   m_Children: []
   m_Father: {fileID: 5721154236791805294}
@@ -161,10 +161,9 @@ GameObject:
   - component: {fileID: 3739563449157505082}
   - component: {fileID: -3193494272682720181}
   - component: {fileID: 6365754887068793243}
-  - component: {fileID: 1933090989}
   m_Layer: 0
   m_Name: Ship2
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -182,6 +181,7 @@ Transform:
   m_Children:
   - {fileID: 5721154237188737133}
   - {fileID: 2492942536426009833}
+  - {fileID: 1386240240555334368}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -222,8 +222,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1213908069
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 329a8db6c6376ca4184f79fd40fe9f04, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -299,22 +299,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5da3d7fbe4e8944eace85bfc8862792, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1933090989
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5721154236791805292}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 942c5dd010e5d23408860361bf88cc3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  WeaponMarkerBullet1: {fileID: 0}
-  WeaponMarkerBullet2: {fileID: 0}
-  HommingIcon: {fileID: 0}
-  weaponType: 0
 --- !u!1 &5721154237188737132
 GameObject:
   m_ObjectHideFlags: 0
@@ -340,7 +324,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5721154237188737132}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.368, y: 0.089, z: 2}
+  m_LocalPosition: {x: -0.368, y: 0.089, z: 0}
   m_LocalScale: {x: 1.3333334, y: 1.3333334, z: 1}
   m_Children: []
   m_Father: {fileID: 5721154236791805294}
@@ -462,3 +446,68 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!1 &5860422597982038893
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1386240240555334368}
+  - component: {fileID: 1151662521}
+  - component: {fileID: 7835257852855881675}
+  m_Layer: 0
+  m_Name: Gun
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1386240240555334368
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5860422597982038893}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.25, y: 0, z: -0.1}
+  m_LocalScale: {x: 0.57142854, y: 0.57142854, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5721154236791805294}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1151662521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5860422597982038893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 942c5dd010e5d23408860361bf88cc3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WeaponMarkerBullet1: {fileID: 0}
+  WeaponMarkerBullet2: {fileID: 0}
+  Hommingmarker: {fileID: 0}
+  HommingSymbolMaker: {fileID: 0}
+  weaponType: 0
+--- !u!70 &7835257852855881675
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5860422597982038893}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.6506375, y: 0.010964742}
+  m_Size: {x: 1.2339513, y: 0.5102074}
+  m_Direction: 1

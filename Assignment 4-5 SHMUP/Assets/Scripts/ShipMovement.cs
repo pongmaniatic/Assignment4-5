@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public enum MovementType { CenterMovement, CircleSpinMovement }
 public class ShipMovement : MonoBehaviour
@@ -8,7 +6,6 @@ public class ShipMovement : MonoBehaviour
     public Rigidbody2D rb2D;
     private float thrust = 5f;
     private float torque = 180f;
-    private int Type;
 
     public MovementType movementType;
     private IMovementType iMovementType;
@@ -24,11 +21,9 @@ public class ShipMovement : MonoBehaviour
         {
             case MovementType.CenterMovement:
                 iMovementType = gameObject.AddComponent<CenterMovement>();
-                Type = 0;
                 break;
             case MovementType.CircleSpinMovement:
                 iMovementType = gameObject.AddComponent<CircleSpinMovement>();
-                Type = 1;
                 break;
             default:
                 iMovementType = gameObject.AddComponent<CenterMovement>();

@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - NewWeapon
+  - DamagingFromPlayer
+  - DamagingFromEnemy
+  - PcCristal
   layers:
   - Default
   - TransparentFX
@@ -14,9 +17,9 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
+  - PickUps
+  - Bullet
+  - Planet
   - 
   - 
   - 
@@ -39,6 +42,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 1761276875
+    locked: 0
+  - name: Planet
+    uniqueID: 2964309475
+    locked: 0
+  - name: Others
+    uniqueID: 2546780757
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: UI
+    uniqueID: 3081059227
     locked: 0
