@@ -1,7 +1,16 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    public Transform ship;
+
+    void Start()
+    {
+        ship = GameObject.FindWithTag("Player").transform;
+        this.transform.localEulerAngles = ship.localEulerAngles;
+    }
     void OnBecameInvisible()
     {
         Destroy(gameObject);
@@ -14,15 +23,7 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    public void MakeHomming()
-    {
-    }
-    public void SetAnimation()
-    {
-    }
-    public void MakeExplosive()
-    {
-    }
+
 }
 
 

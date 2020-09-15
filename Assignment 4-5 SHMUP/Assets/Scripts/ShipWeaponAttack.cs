@@ -10,10 +10,8 @@ public class ShipWeaponAttack : MonoBehaviour
     public GameObject hommingSymbolMaker;// turn on or off.
     public WeaponType weaponType;
     private IWeapon iWeapon;
-    private float fireRate = 0.25F;
-    private float nextFire = 0.0F;
-    //private int weaponCurrentlySelected = 0;// 0 is bullet1 and 1 is bullet2, can be expanded if more weapons are added.
-    //private bool hommingUnlocked = false;
+    private float fireRate = 0.25f;
+    private float nextFire = 0.0f;
 
 
     void Start()

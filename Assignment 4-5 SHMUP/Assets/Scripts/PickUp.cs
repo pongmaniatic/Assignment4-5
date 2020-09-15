@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.WSA.Input;
 
 public class PickUp : MonoBehaviour
 {
-    float scaleRate = 0.001f;
-    float minScale = 0.25f;
-    float maxScale = 0.50f;
- 
+    public float scaleRate = 0.001f;
+    public float minScale = 0.25f;
+    public float maxScale = 0.50f;
+
  public void ApplyScaleRate()
     {
         transform.localScale += Vector3.one * scaleRate;
@@ -30,5 +31,6 @@ public class PickUp : MonoBehaviour
     void Update()
     {
         main();
+
     }
 }

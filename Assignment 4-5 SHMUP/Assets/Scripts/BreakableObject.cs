@@ -11,7 +11,11 @@ public class BreakableObject : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("DamagingFromPlayer")){brokenlevel -= 1;Destroy(other.gameObject);}
+        if (other.gameObject.CompareTag("DamagingFromPlayer"))
+        {
+            brokenlevel -= 1;
+            Destroy(other.gameObject);
+        }
     }
     private void Update()
     {
