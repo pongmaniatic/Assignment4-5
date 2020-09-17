@@ -8,6 +8,9 @@ TagManager:
   - DamagingFromPlayer
   - DamagingFromEnemy
   - PcCristal
+  - HealthSprite
+  - Enemy
+  - Obstacle
   layers:
   - Default
   - TransparentFX
