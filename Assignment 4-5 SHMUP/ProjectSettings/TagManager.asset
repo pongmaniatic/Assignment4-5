@@ -4,13 +4,19 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - NewWeapon
   - DamagingFromPlayer
   - DamagingFromEnemy
   - PcCristal
   - HealthSprite
   - Enemy
   - Obstacle
+  - EnemyManager
+  - Bullet
+  - HealthPickUp
+  - Undefined
+  - WeaponPickUp
+  - Enemy2
+  - Spawner
   layers:
   - Default
   - TransparentFX

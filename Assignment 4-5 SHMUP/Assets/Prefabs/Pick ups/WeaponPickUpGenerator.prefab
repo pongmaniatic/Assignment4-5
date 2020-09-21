@@ -95,4 +95,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c83f2d788116e5044bf650fd2bb803fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PickUp: {fileID: 0}
+  pickUpWord: WeaponPickUp

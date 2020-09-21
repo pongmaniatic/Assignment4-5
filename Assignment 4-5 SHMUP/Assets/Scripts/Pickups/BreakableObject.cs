@@ -7,7 +7,10 @@ public class BreakableObject : MonoBehaviour
     public GameObject brokenSprite1;
     public GameObject brokenSprite2;
     public GameObject brokenSprite3;
-    private int brokenlevel = 3;
+    public int brokenlevel = 3;
+    private int maxBrokenLevel;
+
+    private void Start(){ maxBrokenLevel = brokenlevel;}
 
     void OnCollisionEnter2D(Collision2D other)
     {
@@ -19,8 +22,8 @@ public class BreakableObject : MonoBehaviour
     }
     private void Update()
     {
-        if (brokenlevel == 2) { brokenSprite1.SetActive(false); }
-        if (brokenlevel == 1) { brokenSprite2.SetActive(false); }
+        if (brokenlevel <= ((maxBrokenLevel / 3) * 2)) { brokenSprite1.SetActive(false); }
+        if (brokenlevel <= ((maxBrokenLevel / 3) * 1)) { brokenSprite2.SetActive(false); }
         if (brokenlevel <= 0) { Destroy(gameObject); }
     }
 }

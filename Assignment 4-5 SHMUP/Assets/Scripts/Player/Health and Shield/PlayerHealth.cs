@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int baseHealth = 5;
+    public GameObject DeathMenu;
+    public int baseHealth = 10;
     public int currentHealth;
+    public ShipMovement shipMovementScript;
     private GameObject healthSprite;
-    public SpriteRenderer healthSpriteRenderer;
+    private SpriteRenderer healthSpriteRenderer;
 
-    private void Start()
+
+    void Start()
     {
         healthSprite = GameObject.FindWithTag("HealthSprite");
         healthSpriteRenderer = healthSprite.GetComponent<SpriteRenderer>();
@@ -18,9 +21,9 @@ public class PlayerHealth : MonoBehaviour
 
     private void Update()
     {
-        UpdateHealthSprite();
         if (currentHealth <= 0) { currentHealth = 0; Death(); }
-        if (currentHealth > 10) { currentHealth = 10; }
+        if (currentHealth >= 10) { currentHealth = 10; }
+        UpdateHealthSprite();
     }
 
     void UpdateHealthSprite()
@@ -28,13 +31,14 @@ public class PlayerHealth : MonoBehaviour
         float spriteWidth = (0.3f * currentHealth);
         float adjustPosition = (-300 + (7 * currentHealth));
         healthSpriteRenderer.size = new Vector3(spriteWidth, 0.58f, 0.0f);
-        healthSprite.transform.localPosition = new Vector3(adjustPosition, -265, 0.0f);
+        healthSprite.transform.localPosition = new Vector3(adjustPosition, -250, 0.0f);
     }
-    void HealthAdd(int Heal){currentHealth += Heal;}
+    public void HealthAdd(int Heal){currentHealth += Heal;}
 
-    void HealthMinus(int Damage) { currentHealth -= Damage; }
+    public void HealthMinus(int Damage) { currentHealth -= Damage; }
     void Death() 
-    { 
-       //insert player death
+    {
+        shipMovementScript.enabled = false;
+        DeathMenu.SetActive(true);
     }
 }

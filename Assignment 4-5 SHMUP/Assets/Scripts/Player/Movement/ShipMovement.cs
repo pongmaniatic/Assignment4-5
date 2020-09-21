@@ -4,15 +4,15 @@ public enum MovementType { CenterMovement, CircleSpinMovement }
 public class ShipMovement : MonoBehaviour
 { 
     public Rigidbody2D rb2D;
-    private float thrust = 5f;
-    private float torque = 180f;
+    private float thrust = 50f;
+    private float torque = 1800f;
 
     public MovementType movementType;
     private IMovementType iMovementType;
 
     void Start(){HandleMovementType();}
 
-    private void Update(){Movilize();}
+    private void FixedUpdate(){Movilize();}
 
     private void HandleMovementType()
     {

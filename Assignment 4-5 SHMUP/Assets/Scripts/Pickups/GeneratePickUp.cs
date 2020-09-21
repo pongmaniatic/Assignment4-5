@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class GeneratePickUp : MonoBehaviour
 {
-
-    private float firePickupRegeneration = 1f;
-    private float nextRespawn = 0.0F;
+    public string pickUpWord;
+    private float spawnRate = 1f;
+    private float nextSpawn = 0.0f;
     void Update()
     {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("NewWeapon");
-        if (enemies.Length == 0)
+        GameObject[] pickUps = GameObject.FindGameObjectsWithTag(pickUpWord);
+        if (pickUps.Length == 0)
         {
-            nextRespawn += Time.deltaTime;
-            if (nextRespawn > firePickupRegeneration)
+            nextSpawn += Time.deltaTime;
+            if (nextSpawn > spawnRate)
             {
-                nextRespawn = Time.time + firePickupRegeneration;
+                nextSpawn = Time.time + spawnRate;
                 CreateNewPickUp();
-                nextRespawn = 0.0f;
+                nextSpawn = 0.0f;
             }
         }
     }
@@ -25,7 +25,7 @@ public class GeneratePickUp : MonoBehaviour
     void CreateNewPickUp()
     {
         Vector3 initialPosition = new Vector3(this.transform.position.x, this.transform.position.y + 0.02f, this.transform.position.z);
-        GameObject weaponPickUp = Instantiate(Resources.Load("WeaponPickUp", typeof(GameObject))) as GameObject;
+        GameObject weaponPickUp = Instantiate(Resources.Load(pickUpWord, typeof(GameObject))) as GameObject;
         weaponPickUp.transform.position = initialPosition;
     }
 }

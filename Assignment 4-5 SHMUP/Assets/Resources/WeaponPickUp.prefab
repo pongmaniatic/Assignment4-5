@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 131635556}
   m_Layer: 8
   m_Name: WeaponPickUp
-  m_TagString: NewWeapon
+  m_TagString: WeaponPickUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
