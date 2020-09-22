@@ -9,7 +9,7 @@ public class Bullet : MonoBehaviour
     private Transform ship;
     public bool homming = false;// if this is true the bullet will homme.
     public bool autoDestroy = false;// this makes the bullet die on a timer. its useful for bullets with drag that may linger in the screen for too long.
-    private float attractThrust = 50.0f;// homming force.
+    private float attractThrust = 2.0f;// homming force.
     private Rigidbody2D rb;
     private GameObject closestEnemy;
     private float closestDistance = 10;
@@ -60,7 +60,7 @@ public class Bullet : MonoBehaviour
             {
                 Vector2 direction = transform.position - closestEnemy.transform.position;
                 direction.Normalize();
-                rb.AddForce(direction * (-attractThrust * distance / 20));
+                rb.AddForce(direction * (-attractThrust ));
             }
         }
     }

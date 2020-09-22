@@ -11,7 +11,7 @@ public class SuperComputer : MonoBehaviour
 
 
     void Start(){sprite = objectiveStar.GetComponent<SpriteRenderer>();}//get renderer.
-    private void Update()
+    private void FixedUpdate()
     {
         if (GameObject.FindGameObjectsWithTag("PcCristal").Length < 1)//check if all life cristals are destroyed.
         {

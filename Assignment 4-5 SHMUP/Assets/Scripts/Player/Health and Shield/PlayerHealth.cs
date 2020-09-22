@@ -8,7 +8,7 @@ public class PlayerHealth : MonoBehaviour
     public ShipMovement shipMovementScript;// this is needed to stop the player of moving after it dies.
     private GameObject healthSprite;// this health sprite is tiled and will generate more copies of itself if it is streched.
     private SpriteRenderer healthSpriteRenderer;
-
+   
     void Start()
     {
         healthSprite = GameObject.FindWithTag("HealthSprite");
@@ -24,9 +24,9 @@ public class PlayerHealth : MonoBehaviour
     void UpdateHealthSprite()
     {
         float spriteWidth = (0.3f * currentHealth);// the width of how much the sprite is streched will determine the amount of health bars that appear.
-        float adjustPosition = (-300 + (7 * currentHealth));// since the sprite streches from both sides, its position needs to be adjusted.
+        float adjustPosition = (-4.2f + (0.1f * currentHealth));// since the sprite streches from both sides, its position needs to be adjusted.
         healthSpriteRenderer.size = new Vector3(spriteWidth, 0.58f, 0.0f);
-        healthSprite.transform.localPosition = new Vector3(adjustPosition, -260, 0.0f);
+        healthSprite.transform.localPosition = new Vector3(adjustPosition, 0, 0.0f);
     }
     public void HealthAdd(int Heal){currentHealth += Heal;}
     public void HealthMinus(int Damage) { currentHealth -= Damage; }

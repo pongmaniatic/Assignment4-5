@@ -16,7 +16,7 @@ public class EnemyBullet : MonoBehaviour
         bulletRigidbody = GetComponent<Rigidbody2D>();
     }
     void OnBecameInvisible(){Destroy(bullet);}// destroys the bullet when the camera can no longer see it.
-    private void Update(){bulletRigidbody.AddForce(direction * -0.5f);}// just makes the bullet move forwards.
+    private void FixedUpdate(){bulletRigidbody.AddForce(direction * -2f);}// just makes the bullet move forwards.
 
     void OnTriggerEnter2D(Collider2D other)
     {

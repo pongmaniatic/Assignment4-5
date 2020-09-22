@@ -15,10 +15,10 @@ public class Laser : MonoBehaviour
     private float nextTurnChange = 0.0f;
     private bool turnDirection = true;// true means degrees going up and false is degrees going down.
     void Start() { HandleMathType(); }
-    void Update()
+    void FixedUpdate()
     {
-        if (turnDirection) { degrees += 0.05f; }//what direction the axis and the lasers turn.
-        if (!turnDirection) { degrees -= 0.05f; }//what direction the axis and the lasers turn.
+        if (turnDirection) { degrees += 0.3f; }//what direction the axis and the lasers turn.
+        if (!turnDirection) { degrees -= 0.3f; }//what direction the axis and the lasers turn.
         LineEquation();
         rotationAxis.transform.eulerAngles = Vector3.forward * degrees;//rotates the axis and lasers along with it.
         nextTurnChange += Time.deltaTime;//this increases until it get above 10 and then reverts to 0 again.
