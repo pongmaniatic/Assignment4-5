@@ -14,6 +14,7 @@ public class CenterMovement : MonoBehaviour, IMovementType
 }
 public class CircleSpinMovement : MonoBehaviour, IMovementType
 {
+    //originally i wanted to have 3 different ships with 3 different types of movement, I programmed this movement type but was not able to include it on the game, but you can select it in the inspector.
     public void Move(Rigidbody2D rb2D, float Thrust, float Torque)
     {
         float rot = Torque * Time.deltaTime;

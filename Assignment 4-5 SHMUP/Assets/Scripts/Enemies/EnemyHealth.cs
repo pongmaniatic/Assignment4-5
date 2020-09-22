@@ -1,12 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    public int baseHealth = 5;
-    public int currentHealth;
-    private GameObject enemyManager;
+    private int baseHealth = 5;// enemy HP
+    private int currentHealth;
+    private GameObject enemyManager;//its needed to update relevant objects to repell.
     private EnemyManager enemyManagerScript;
 
     void Start()
@@ -16,13 +14,13 @@ public class EnemyHealth : MonoBehaviour
         enemyManagerScript = enemyManager.GetComponent<EnemyManager>();
     }
 
-    void Update(){if (currentHealth <= 0) { currentHealth = 0; Death(); }}
+    void Update(){if (currentHealth <= 0) { currentHealth = 0; Death(); }}//if 0 HP then the enemy dies.
 
-    public void HealthMinus(int Damage) { currentHealth -= Damage; }
+    public void HealthMinus(int Damage) { currentHealth -= Damage; }//this substracts life from HP, so we could make different bullets with different damages.
 
     void Death()
     {
-        enemyManagerScript.UpdateAllObjectsOfTag();
+        enemyManagerScript.UpdateAllObjectsOfTag();// update all relevant objects because one is no longer necesary to repell.
         Destroy(gameObject);
     }
 }

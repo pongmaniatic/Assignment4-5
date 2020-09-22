@@ -1,37 +1,24 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class AttractedToObject : MonoBehaviour
 {
-    public string[] listOfTags = new string[] { "Player"};
-    private GameObject[] allObjectsOfTag;
-    private List<GameObject> listOfObjects = new List<GameObject>();
-    private float attractThrust = 100.0f;
-    private Rigidbody2D rb;
+    private GameObject Player;//the player ship.
+    private float attractThrust = 100.0f;// how strong is the attraction.
+    private Rigidbody2D rb;// the rigidbody of this object.
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        foreach (string tagObject in listOfTags)
-        {
-            allObjectsOfTag = GameObject.FindGameObjectsWithTag(tagObject);
-            foreach (GameObject objects in allObjectsOfTag) { listOfObjects.Add(objects); }
-        }
+        rb = GetComponent<Rigidbody2D>();// get the rigidbody 
+        Player = GameObject.FindGameObjectWithTag("Player");// get player
     }
-
     private void FixedUpdate(){Attract();}
-
     void Attract()
     {
-        foreach (GameObject targetObject in listOfObjects)
-        {
-            if (targetObject == this.gameObject){continue;}
-            float distance = Vector2.Distance(transform.position, targetObject.transform.position);
-            if (distance <= 15 && distance > 6)
+            float distance = Vector2.Distance(transform.position, Player.transform.position); // get the distance, because the closer it is to the player, the weaker the attraction.
+            if (distance <= 15 && distance > 6)// too close and the enemy stops getting closer.
             {
-                Vector2 direction = transform.position - targetObject.transform.position;
-                direction.Normalize();
-                rb.AddForce(direction * (-attractThrust * distance / 20));
-            }
+                Vector2 direction = transform.position - Player.transform.position;//calculate the vector towards the target.
+            direction.Normalize();//make the magnitud 1.
+            rb.AddForce(direction * (-attractThrust * distance / 20));//add force towardsy the target depending on distance.
         }
     }
 }

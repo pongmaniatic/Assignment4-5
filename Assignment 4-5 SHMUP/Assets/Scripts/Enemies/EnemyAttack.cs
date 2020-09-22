@@ -1,22 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
-    private IWeapon iWeapon;
-    public float fireRate = 1.5f;
+    private IWeapon iWeapon;//use the weapon interface to get the enemy bullet.
+    public float fireRate = 1.5f;// rate of fire.
     private float nextFire = 0.0f;
-    private GameObject player;
+    private GameObject player;// to get players position.
 
-    // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        iWeapon = gameObject.AddComponent<BulletEnemy>();
+        iWeapon = gameObject.AddComponent<BulletEnemy>();// adds the interface component to fire enemy bullets.
     }
 
-    // Update is called once per frame
     void Update()
     {
         float distance = Vector2.Distance(transform.position, player.transform.position);
@@ -27,6 +23,6 @@ public class EnemyAttack : MonoBehaviour
         }
     }
 
-    public void Fire() { iWeapon.Shoot(); }
+    public void Fire() { iWeapon.Shoot(); }// shoot!
 
 }

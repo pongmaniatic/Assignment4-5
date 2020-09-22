@@ -1,10 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PickUp : MonoBehaviour
 {
-    private float scaleRate = 0.005f;
+    private float scaleRate = 0.005f;// the rate of change for the object changing scale.
     private float minScale = 0.25f;
     private float maxScale = 0.50f;
 

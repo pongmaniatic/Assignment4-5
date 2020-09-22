@@ -1,24 +1,20 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Shield : MonoBehaviour
 {
-    private bool shieldActive = false;
-    private bool shieldRecharging = false;
-    private float rechargeRate = 15f;
+    private bool shieldActive = false;// if the shield is on or off.
+    private bool shieldRecharging = false;// if the shield is recharging.
+    private float rechargeRate = 15f;// how much it takes to recharge.
     private float nextCharge = 0.0f;
-    private float shieldLifeSpawn = 5f;
+    private float shieldLifeSpawn = 5f;// how much the shield lasts.
     private float nextShield = 0.0f;
     public GameObject shield;
-    public SpriteRenderer shieldSpriteBase;
-    public SpriteRenderer shieldSpriteSymbol;
-
-
+    public SpriteRenderer shieldSpriteBase;//this is needed to show the icon that tells the player if the shield is ready to use.
+    public SpriteRenderer shieldSpriteSymbol;//this is needed to show the icon that tells the player if the shield is ready to use.
     void Update()
     {
-        if (Input.GetKeyDown("space") && shieldRecharging == false && shieldActive == false) {ActivateShields();}
-        if (shieldRecharging == true)
+        if (Input.GetKeyDown("space") && shieldRecharging == false && shieldActive == false) {ActivateShields();}// activate the shield with space if its possible.
+        if (shieldRecharging == true)// after the shields power end it will start to recharge and the icon will be black.
         {
             if (Time.time > nextCharge)
             {
@@ -38,7 +34,6 @@ public class Shield : MonoBehaviour
         }
 
     }
-
     void ActivateShields()
     {
         shield.SetActive(true); 
@@ -52,5 +47,4 @@ public class Shield : MonoBehaviour
         shieldRecharging = true;
         nextCharge = Time.time + rechargeRate;
     }
-
 }

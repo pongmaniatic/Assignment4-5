@@ -1,13 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public enum BulletCosOrSen { SenMinus, Sen }
+public enum BulletCosOrSen { SenMinus, Sen } // -sin and sin make oposing curves. one bullet choses one and the other the other one.
 public class BulletSinMovement : MonoBehaviour
 {
     public BulletCosOrSen SenMinusOrSen;
     private float xValue;
-    void FixedUpdate()
+    void FixedUpdate()// this makes the bullet follow sin() patterns when they are shot.
     {
         switch (SenMinusOrSen)
         {
@@ -21,18 +19,11 @@ public class BulletSinMovement : MonoBehaviour
             default:
                 break;
         }
-
         xValue += 0.5f;
     }
-    void OnBecameInvisible()
-    {
-        Destroy(gameObject);
-    }
+    void OnBecameInvisible(){Destroy(gameObject);}
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (!other.gameObject.CompareTag("Player"))
-        {
-            Destroy(gameObject);
-        }
+        if (!other.gameObject.CompareTag("Player")){Destroy(gameObject);}
     }
 }

@@ -3,6 +3,11 @@ using UnityEngine.Assertions;
  
 public class StarField : MonoBehaviour
 {
+	/// <summary>
+	/// this is a code I got from a website, so I did not come up with it, it generates starts at random locations
+	/// and with random sizes, I created 3 layers of this and put it at different depths to create
+	/// the paralax effect.
+	/// </summary>
 	public int maxStars = 100;
 	public float starSize = 0.1f;
 	public float starSizeRange = 0.5f;

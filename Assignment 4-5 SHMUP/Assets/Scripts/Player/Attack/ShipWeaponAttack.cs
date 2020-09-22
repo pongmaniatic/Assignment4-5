@@ -13,12 +13,15 @@ public class ShipWeaponAttack : MonoBehaviour
     public PlayerHealth playerHealthComponent;
     public WeaponType weaponType;
     private IWeapon iWeapon;
-    private float fireRate = 0.25f;
+    private float fireRate = 0.25f;// rate of fire for player weapon.
     private float nextFire = 0.0f;
     private int Weapon = 0;
-    private List<int> UnlockedWeapons = new List<int>();
+    private List<int> UnlockedWeapons = new List<int>();// a list of all unlocked weapons, it starts with only one type of bullet unlocked, it can have 3 in total.
+    private float invincivilitySeconds = 3f;// seconds of invincivility after being hit by the laser
+    private float nextInvincivilityOff = 0.0f;
+    private bool invincivility = false;
 
-    void Start(){HandleWeaponType(); UnlockedWeapons.Add(0); }//to check the value of weaponType in the inspector initially
+    void Start(){HandleWeaponType(); UnlockedWeapons.Add(0); }//to check the value of weaponType in the inspector initially and adds the first type of bullet.
     private void HandleWeaponType()
     {
         Component IWeaponComponent = gameObject.GetComponent<IWeapon>() as Component;//To prevent Unity from creating multiple copies of the same component in inspector at runtime
@@ -56,6 +59,11 @@ public class ShipWeaponAttack : MonoBehaviour
     {
         if (col.gameObject.tag == "WeaponPickUp") { Destroy(col.gameObject); GrabWeapon(); }
         if (col.gameObject.tag == "HealthPickUp") { Destroy(col.gameObject); playerHealthComponent.HealthAdd(10); }
+        if (col.gameObject.tag == "Laser")
+        {
+            if (!invincivility){ playerHealthComponent.HealthMinus(2); invincivility = true; }// get hurt by the laser.
+        }
+
     }
     void Update()
     {
@@ -65,8 +73,17 @@ public class ShipWeaponAttack : MonoBehaviour
             HandleWeaponType();
             Fire();
         }
-        if (Input.GetKeyUp(KeyCode.Q)) { SwitchWeaponLeft(); }
-        if (Input.GetKeyUp(KeyCode.E)) { SwitchWeaponRight(); }
+        if (Input.GetKeyUp(KeyCode.Q)) { SwitchWeaponLeft(); }// used to change between unlocked guns manually
+        if (Input.GetKeyUp(KeyCode.E)) { SwitchWeaponRight(); }// used to change between unlocked guns manually
+        if (invincivility)
+        {
+            nextInvincivilityOff += Time.deltaTime;
+            if (nextInvincivilityOff > invincivilitySeconds)
+            {
+                nextInvincivilityOff = 0.0f;
+                invincivility = false;
+            }
+        }
     }
     void UpdateWeapon()
     {

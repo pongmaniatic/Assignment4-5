@@ -17,6 +17,7 @@ TagManager:
   - WeaponPickUp
   - Enemy2
   - Spawner
+  - Laser
   layers:
   - Default
   - TransparentFX
