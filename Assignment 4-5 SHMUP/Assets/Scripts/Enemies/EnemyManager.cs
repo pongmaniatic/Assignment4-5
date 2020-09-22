@@ -9,6 +9,7 @@ public class EnemyManager : MonoBehaviour
     public List<GameObject> listOfObjects = new List<GameObject>();
 
     public GameObject objectiveStar;
+    public GameObject WinArea;
     private SpriteRenderer sprite;
 
     public void Start()
@@ -21,6 +22,7 @@ public class EnemyManager : MonoBehaviour
     {
         if (GameObject.FindGameObjectsWithTag("Spawner").Length < 1)
         {
+            WinArea.GetComponent<WinArea>().progress += 1;
             sprite.color = new Color(1, 1, 1, 1);
         }
     }

@@ -31,7 +31,7 @@ public class PlayerHealth : MonoBehaviour
         float spriteWidth = (0.3f * currentHealth);
         float adjustPosition = (-300 + (7 * currentHealth));
         healthSpriteRenderer.size = new Vector3(spriteWidth, 0.58f, 0.0f);
-        healthSprite.transform.localPosition = new Vector3(adjustPosition, -250, 0.0f);
+        healthSprite.transform.localPosition = new Vector3(adjustPosition, -260, 0.0f);
     }
     public void HealthAdd(int Heal){currentHealth += Heal;}
 

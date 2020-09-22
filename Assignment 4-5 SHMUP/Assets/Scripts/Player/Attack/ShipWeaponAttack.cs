@@ -77,22 +77,21 @@ public class ShipWeaponAttack : MonoBehaviour
     }
     void GrabWeapon()
     {
+        if (Weapon == 0) { Weapon = 1; }
+        else if (Weapon == 1) { Weapon = 2; }
+        else if (Weapon == 2) { Weapon = 0; }
         if (UnlockedWeapons.Count == 1) { UnlockedWeapons.Add(1); Weapon = 1; }
         else if (UnlockedWeapons.Count == 2) { UnlockedWeapons.Add(2); Weapon = 2; }
-        if (Weapon == 0) { Weapon = 2; }
-        else if (Weapon == 1) { Weapon = 0; }
-        else if (Weapon == 2) { Weapon = 1; }
         UpdateWeapon();
     }
-
     void SwitchWeaponRight()
     {
         if (UnlockedWeapons.Count != 1)
         {
             if (UnlockedWeapons.Count == 2)
             {
-                if (Weapon == 0) { Weapon = 2; }
-                else if (Weapon == 2) { Weapon = 0; }
+                if (Weapon == 0) { Weapon = 1; }
+                else if (Weapon == 1) { Weapon = 0; }
             }
             else
             {
@@ -109,8 +108,8 @@ public class ShipWeaponAttack : MonoBehaviour
         {
             if (UnlockedWeapons.Count == 2)
             {
-                if (Weapon == 2) { Weapon = 0; }
-                else if (Weapon == 0) { Weapon = 2; }
+                if (Weapon == 1) { Weapon = 0; }
+                else if (Weapon == 0) { Weapon = 1; }
             }
             else
             {

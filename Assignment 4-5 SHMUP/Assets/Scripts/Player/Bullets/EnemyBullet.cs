@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyBullet : MonoBehaviour
 {
     public GameObject ship;
-    public Vector2 direction;
+    private Vector2 direction;
     public GameObject bullet;
     private Rigidbody2D bulletRigidbody;
 

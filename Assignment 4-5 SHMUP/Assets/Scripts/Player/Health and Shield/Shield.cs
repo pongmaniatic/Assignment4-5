@@ -41,14 +41,12 @@ public class Shield : MonoBehaviour
 
     void ActivateShields()
     {
-        Debug.Log("activated");
         shield.SetActive(true); 
         shieldActive = true;
         nextShield = Time.time + shieldLifeSpawn;
     }
     void DeactivatShield()
     {
-        Debug.Log("Deactivated");
         shield.SetActive(false);
         shieldActive = false;
         shieldRecharging = true;
